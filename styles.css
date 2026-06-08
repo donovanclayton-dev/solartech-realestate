@@ -255,7 +255,11 @@ section { padding-block: clamp(4rem, 8vw, 7rem); }
   box-shadow: var(--shadow-sm); transition: box-shadow .2s, transform .2s;
 }
 .opp-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-.opp-icon { font-size: 2rem; margin-bottom: 1.25rem; }
+.opp-num {
+  font-size: 2.5rem; font-weight: 900;
+  color: rgba(7,17,31,.08); line-height: 1;
+  margin-bottom: .875rem; letter-spacing: -.03em;
+}
 .opp-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-1); margin-bottom: .6rem; }
 .opp-card p { font-size: .93rem; color: var(--text-2); line-height: 1.7; }
 
