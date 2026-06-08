@@ -41,6 +41,56 @@ if (reveals.length && 'IntersectionObserver' in window) {
   reveals.forEach(el => el.classList.add('visible'));
 }
 
+/* ── Coverage map ─────────────────────────────────── */
+const mapEl = document.getElementById('map');
+if (mapEl && typeof L !== 'undefined') {
+  const map = L.map('map', {
+    center: [36.2, -116.8],
+    zoom: 5,
+    zoomControl: true,
+    scrollWheelZoom: false,
+    attributionControl: true
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  const markerIcon = L.divIcon({
+    className: 'map-marker-wrap',
+    html: '<div class="map-marker-pulse"></div>',
+    iconSize: [18, 18],
+    iconAnchor: [9, 9],
+    popupAnchor: [0, -14]
+  });
+
+  const serviceAreas = [
+    {
+      coords: [32.85, -117.2],
+      name: 'Southern California',
+      detail: 'San Diego · Los Angeles · Orange County'
+    },
+    {
+      coords: [37.6, -122.0],
+      name: 'Northern California',
+      detail: 'San Francisco Bay Area · Sacramento'
+    },
+    {
+      coords: [33.45, -112.1],
+      name: 'Arizona',
+      detail: 'Phoenix · Scottsdale · Tucson'
+    }
+  ];
+
+  serviceAreas.forEach(area => {
+    L.marker(area.coords, { icon: markerIcon })
+      .addTo(map)
+      .bindPopup(`<strong>${area.name}</strong><br>${area.detail}`);
+  });
+}
+
 /* ── Form submission ──────────────────────────────── */
 const form = document.querySelector('.connect-form');
 if (form) {

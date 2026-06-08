@@ -443,6 +443,80 @@ textarea { resize: vertical; min-height: 96px; }
 .footer-legal { padding-block: 1.5rem; }
 .footer-legal p { font-size: .78rem; color: rgba(255,255,255,.3); text-align: center; }
 
+/* ── Coverage Map ─────────────────────────────────── */
+.coverage { background: var(--navy); }
+
+.coverage-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem; align-items: center;
+}
+.coverage-sub {
+  font-size: clamp(.92rem, 1.3vw, 1.02rem);
+  color: rgba(255,255,255,.6); line-height: 1.75;
+  margin-top: .75rem; margin-bottom: 2.5rem;
+  max-width: 440px;
+}
+.coverage-regions {
+  display: flex; flex-direction: column; gap: 1.25rem;
+}
+.coverage-region {
+  display: flex; align-items: flex-start; gap: 1rem;
+}
+.region-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 0 4px rgba(255,107,44,.25);
+  flex-shrink: 0; margin-top: .35rem;
+}
+.coverage-region strong {
+  display: block; font-size: .95rem; font-weight: 700;
+  color: var(--white); margin-bottom: .2rem;
+}
+.coverage-region span {
+  font-size: .82rem; color: rgba(255,255,255,.5);
+}
+
+.coverage-map {
+  border-radius: var(--r-lg); overflow: hidden;
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 8px 48px rgba(0,0,0,.4);
+}
+#map { height: 440px; }
+
+/* Leaflet popup override */
+.leaflet-popup-content-wrapper {
+  background: var(--navy-mid) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  border-radius: var(--r-md) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,.4) !important;
+  color: var(--white) !important;
+}
+.leaflet-popup-tip { background: var(--navy-mid) !important; }
+.leaflet-popup-content strong {
+  color: var(--orange); font-size: .95rem;
+}
+.leaflet-popup-content {
+  color: rgba(255,255,255,.75); font-size: .85rem; line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+}
+.leaflet-container { font-family: 'Roboto', sans-serif; }
+.leaflet-control-attribution { font-size: .65rem !important; }
+
+/* Custom pulsing map marker */
+.map-marker-wrap { background: transparent; border: none; }
+.map-marker-pulse {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 0 5px rgba(255,107,44,.3);
+  animation: mapPulse 2.4s ease-in-out infinite;
+  cursor: pointer;
+}
+@keyframes mapPulse {
+  0%, 100% { box-shadow: 0 0 0 5px rgba(255,107,44,.3), 0 0 16px rgba(255,107,44,.4); }
+  50% { box-shadow: 0 0 0 10px rgba(255,107,44,.12), 0 0 28px rgba(255,107,44,.3); }
+}
+
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width: 960px) {
   .hero { grid-template-columns: 1fr; }
@@ -454,6 +528,8 @@ textarea { resize: vertical; min-height: 96px; }
   .trust-grid { grid-template-columns: repeat(2, 1fr); }
   .connect-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .trust-list { grid-template-columns: 1fr; }
+  .coverage-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  #map { height: 340px; }
 }
 
 @media (max-width: 640px) {

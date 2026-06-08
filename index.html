@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SolarTech Referral Partner Program | Real Estate Agents</title>
-  <meta name="description" content="San Diego real estate agents — earn $50 per qualified lead and $1,000 per solar install. Free to join. No commitment.">
+  <meta name="description" content="California and Arizona real estate agents — earn $50 per qualified lead and $1,000 per solar install. Serving SoCal, NorCal, and Arizona. Free to join.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -33,7 +34,7 @@
       <div class="hero-left">
         <div class="open-badge">
           <span class="badge-dot" aria-hidden="true"></span>
-          Now Open to San Diego Agents
+          Now Open · CA &amp; Arizona Agents
         </div>
         <h1 class="hero-h1">
           Your Clients Are Already<br>
@@ -41,7 +42,7 @@
           <em>Get Paid When They Go</em>
         </h1>
         <p class="hero-sub">
-          New homeowners are the number-one solar buyer. You're meeting them at the exact moment they're ready to make decisions. Join the SolarTech Referral Partner Program and earn every time you make the connection.
+          Whether you're closing deals in Southern California, Northern California, or Arizona — new homeowners are the number-one solar buyer. Join the SolarTech Referral Partner Program and earn every time you make the connection.
         </p>
         <div class="hero-ctas">
           <a href="#join" class="btn btn-orange">Join the Program</a>
@@ -243,6 +244,43 @@
       </div>
     </section>
 
+    <!-- ── Coverage Map ──────────────────────────────── -->
+    <section class="coverage" id="coverage">
+      <div class="container coverage-inner">
+        <div class="coverage-copy reveal">
+          <p class="section-tag section-tag--light">Where We Operate</p>
+          <h2 class="section-h2 section-h2--light">Three Markets. One Program.</h2>
+          <p class="coverage-sub">SolarTech serves homeowners across California and Arizona — the three fastest-growing solar markets in the country. Wherever you're closing, we're already there.</p>
+          <div class="coverage-regions">
+            <div class="coverage-region">
+              <div class="region-dot" aria-hidden="true"></div>
+              <div>
+                <strong>Southern California</strong>
+                <span>San Diego · Los Angeles · Orange County</span>
+              </div>
+            </div>
+            <div class="coverage-region">
+              <div class="region-dot" aria-hidden="true"></div>
+              <div>
+                <strong>Northern California</strong>
+                <span>San Francisco Bay Area · Sacramento</span>
+              </div>
+            </div>
+            <div class="coverage-region">
+              <div class="region-dot" aria-hidden="true"></div>
+              <div>
+                <strong>Arizona</strong>
+                <span>Phoenix · Scottsdale · Tucson</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="coverage-map reveal reveal-delay-2">
+          <div id="map" role="img" aria-label="Map showing SolarTech service areas in California and Arizona"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ── Join Form ──────────────────────────────────── -->
     <section class="connect" id="join">
       <div class="container connect-inner">
@@ -321,6 +359,7 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="script.js"></script>
 </body>
 </html>
