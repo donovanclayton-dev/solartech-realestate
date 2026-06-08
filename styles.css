@@ -128,9 +128,11 @@ button, input, select, textarea { font: inherit; }
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   padding-top: clamp(120px, 14vw, 180px);
   padding-bottom: 3rem;
   gap: 1.75rem;
+  max-width: 680px;
 }
 
 .open-badge {
