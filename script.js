@@ -67,21 +67,9 @@ if (mapEl && typeof L !== 'undefined') {
   });
 
   const serviceAreas = [
-    {
-      coords: [32.85, -117.2],
-      name: 'Southern California',
-      detail: 'San Diego · Los Angeles · Orange County'
-    },
-    {
-      coords: [37.6, -122.0],
-      name: 'Northern California',
-      detail: 'San Francisco Bay Area · Sacramento'
-    },
-    {
-      coords: [33.45, -112.1],
-      name: 'Arizona',
-      detail: 'Phoenix · Scottsdale · Tucson'
-    }
+    { coords: [32.85, -117.2], name: 'Southern California', detail: 'San Diego · Los Angeles · Orange County' },
+    { coords: [37.6, -122.0],  name: 'Northern California', detail: 'San Francisco Bay Area · Sacramento' },
+    { coords: [33.45, -112.1], name: 'Arizona',             detail: 'Phoenix · Scottsdale · Tucson' }
   ];
 
   serviceAreas.forEach(area => {
@@ -89,6 +77,13 @@ if (mapEl && typeof L !== 'undefined') {
       .addTo(map)
       .bindPopup(`<strong>${area.name}</strong><br>${area.detail}`);
   });
+
+  /* Re-render tiles once the map scrolls into view (fixes blank tile issue) */
+  new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      map.invalidateSize();
+    }
+  }, { threshold: 0.1 }).observe(mapEl);
 }
 
 /* ── Form submission ──────────────────────────────── */
