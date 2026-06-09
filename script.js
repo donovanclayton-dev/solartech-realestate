@@ -41,6 +41,36 @@ if (reveals.length && 'IntersectionObserver' in window) {
   reveals.forEach(el => el.classList.add('visible'));
 }
 
+/* ── Trust stat flip + count-up ──────────────────── */
+const trustGrid = document.querySelector('.trust-grid');
+if (trustGrid && 'IntersectionObserver' in window) {
+  new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    document.querySelectorAll('.trust-card').forEach((card, i) => {
+      setTimeout(() => {
+        const numEl = card.querySelector('.trust-num');
+        if (!numEl) return;
+        const raw = numEl.textContent.trim();
+        const match = raw.match(/^(\d+(?:\.\d+)?)(.*)/);
+        numEl.classList.add('flipping');
+        if (match) {
+          const target = parseFloat(match[1]);
+          const suffix = match[2];
+          const duration = 900;
+          const start = performance.now();
+          const tick = now => {
+            const p = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            numEl.textContent = Math.round(eased * target) + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      }, i * 140);
+    });
+  }, { threshold: 0.4 }).observe(trustGrid);
+}
+
 /* ── Coverage map ─────────────────────────────────── */
 const mapEl = document.getElementById('map');
 if (mapEl && typeof L !== 'undefined') {

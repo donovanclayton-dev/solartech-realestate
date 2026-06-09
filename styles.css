@@ -437,6 +437,15 @@ button, input, select, textarea { font: inherit; }
 .trust-num {
   font-size: clamp(2rem, 3vw, 2.75rem); font-weight: 900; color: var(--navy);
   line-height: 1; margin-bottom: .5rem; letter-spacing: -.02em;
+  display: block; transform-origin: top center;
+}
+@keyframes statFlip {
+  0%   { opacity: 0; transform: perspective(300px) rotateX(-70deg) translateY(-12px); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: perspective(300px) rotateX(0deg) translateY(0); }
+}
+.trust-num.flipping {
+  animation: statFlip 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .trust-label {
   font-size: .75rem; font-weight: 600; color: var(--text-3);
