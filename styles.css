@@ -417,6 +417,7 @@ button, input, select, textarea { font: inherit; }
 }
 .leaflet-container { font-family: 'Roboto', sans-serif; }
 .leaflet-control-attribution { font-size: .65rem !important; }
+.map-labels-layer { filter: brightness(6) saturate(0); }
 .map-marker-wrap { background: transparent; border: none; }
 .map-marker-pulse {
   width: 18px; height: 18px; border-radius: 50%;
