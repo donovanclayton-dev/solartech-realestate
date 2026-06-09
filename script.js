@@ -41,22 +41,33 @@ if (reveals.length && 'IntersectionObserver' in window) {
   reveals.forEach(el => el.classList.add('visible'));
 }
 
-/* ── Steps sequential light-up ───────────────────── */
+/* ── Steps sequential light-up (looping) ─────────── */
 const stepsGrid = document.querySelector('.steps-grid');
 if (stepsGrid && 'IntersectionObserver' in window) {
+  const steps = [...stepsGrid.querySelectorAll('.step')];
+  const interval = 1100;
+  let loopTimer = null;
+
+  const runLoop = () => {
+    let i = 0;
+    const next = () => {
+      steps.forEach(s => s.classList.remove('lit'));
+      steps[i].classList.add('lit');
+      i = (i + 1) % steps.length;
+      loopTimer = setTimeout(next, interval);
+    };
+    next();
+  };
+
   new IntersectionObserver(entries => {
-    if (!entries[0].isIntersecting) return;
-    const steps = [...stepsGrid.querySelectorAll('.step')];
-    steps.forEach((step, i) => {
-      setTimeout(() => {
-        steps.forEach(s => s.classList.remove('lit'));
-        step.classList.add('lit');
-        if (i === steps.length - 1) {
-          setTimeout(() => steps.forEach(s => s.classList.add('lit')), 900);
-        }
-      }, i * 1100);
-    });
-  }, { threshold: 0.4 }).observe(stepsGrid);
+    if (entries[0].isIntersecting) {
+      if (!loopTimer) runLoop();
+    } else {
+      clearTimeout(loopTimer);
+      loopTimer = null;
+      steps.forEach(s => s.classList.remove('lit'));
+    }
+  }, { threshold: 0.3 }).observe(stepsGrid);
 }
 
 /* ── Trust stat flip + count-up ──────────────────── */
