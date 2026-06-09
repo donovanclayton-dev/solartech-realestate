@@ -116,17 +116,3 @@ if (mapEl && typeof L !== 'undefined') {
   }, { threshold: 0.1 }).observe(mapEl);
 }
 
-/* ── Form submission ──────────────────────────────── */
-const form = document.querySelector('.connect-form');
-if (form) {
-  form.addEventListener('submit', e => {
-    const action = form.getAttribute('action') || '';
-    if (action.includes('REPLACE_WITH_YOUR_ID')) {
-      e.preventDefault();
-      const name = form.querySelector('#name')?.value.trim() || 'there';
-      alert(
-        `Thanks, ${name}!\n\nPlease send your application directly to:\nmarketing@solartechonline.com\n\nWe'll confirm your partner status within 24 hours.`
-      );
-    }
-  });
-}
