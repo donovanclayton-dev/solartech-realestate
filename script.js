@@ -52,9 +52,9 @@ if (stepsGrid && 'IntersectionObserver' in window) {
         steps.forEach(s => s.classList.remove('lit'));
         step.classList.add('lit');
         if (i === steps.length - 1) {
-          setTimeout(() => steps.forEach(s => s.classList.add('lit')), 500);
+          setTimeout(() => steps.forEach(s => s.classList.add('lit')), 900);
         }
-      }, i * 650);
+      }, i * 1100);
     });
   }, { threshold: 0.4 }).observe(stepsGrid);
 }

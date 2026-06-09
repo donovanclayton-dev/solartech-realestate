@@ -283,7 +283,7 @@ button, input, select, textarea { font: inherit; }
   padding: 2.25rem 2rem;
   border-right: 1px solid var(--border);
   background: var(--white);
-  transition: background .4s, box-shadow .4s;
+  transition: background .7s, box-shadow .7s;
   position: relative;
 }
 .step:last-child { border-right: none; }
@@ -292,7 +292,7 @@ button, input, select, textarea { font: inherit; }
   font-size: 3rem; font-weight: 900;
   color: rgba(7,17,31,.07); line-height: 1;
   margin-bottom: .75rem; letter-spacing: -.03em;
-  transition: color .4s;
+  transition: color .7s;
 }
 .step h3 { font-size: .95rem; font-weight: 700; color: var(--text-1); margin-bottom: .5rem; }
 .step p { font-size: .88rem; color: var(--text-2); line-height: 1.7; }
