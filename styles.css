@@ -184,7 +184,7 @@ button, input, select, textarea { font: inherit; }
   color: var(--orange); text-transform: uppercase;
   letter-spacing: .1em; margin-bottom: .875rem;
 }
-.comp-card p { font-size: .88rem; color: rgba(255,255,255,.55); line-height: 1.65; }
+.comp-card p { font-size: .88rem; color: rgba(255,255,255,.82); line-height: 1.65; }
 
 .open-badge {
   display: inline-flex; align-items: center; gap: .5rem;
@@ -210,7 +210,7 @@ button, input, select, textarea { font: inherit; }
 
 .hero-sub {
   font-size: clamp(.9rem, 1.3vw, 1.05rem);
-  color: rgba(255,255,255,.65); max-width: 640px; line-height: 1.7;
+  color: rgba(255,255,255,.88); max-width: 640px; line-height: 1.7;
 }
 
 .hero-ctas { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
@@ -303,7 +303,7 @@ button, input, select, textarea { font: inherit; }
   transition: color .7s;
 }
 .step h3 { font-size: .95rem; font-weight: 700; color: var(--text-1); margin-bottom: .5rem; }
-.step p { font-size: .88rem; color: var(--text-2); line-height: 1.7; }
+.step p { font-size: .88rem; color: var(--text-1); line-height: 1.7; }
 
 .step.lit {
   background: #fff5ec;
@@ -321,9 +321,9 @@ button, input, select, textarea { font: inherit; }
 
 /* ── Compensation ─────────────────────────────────── */
 .compensation { background: var(--navy); }
-.compensation .section-tag { color: rgba(255,255,255,.45); }
+.compensation .section-tag { color: rgba(255,255,255,.7); }
 .compensation .section-h2 { color: var(--white); }
-.compensation .section-sub { color: rgba(255,255,255,.55); }
+.compensation .section-sub { color: rgba(255,255,255,.85); }
 
 .bonus-grid {
   display: grid;
@@ -364,7 +364,7 @@ button, input, select, textarea { font: inherit; }
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 5rem; align-items: center;
 }
-.example-body { font-size: .97rem; color: var(--text-2); line-height: 1.75; margin-top: 1rem; }
+.example-body { font-size: .97rem; color: var(--text-1); line-height: 1.75; margin-top: 1rem; }
 
 .example-table-wrap {
   background: var(--white); border: 1px solid var(--border);
@@ -398,7 +398,7 @@ button, input, select, textarea { font: inherit; }
   gap: 4rem; align-items: center;
 }
 .coverage-sub {
-  font-size: clamp(.9rem, 1.3vw, 1rem); color: rgba(255,255,255,.58);
+  font-size: clamp(.9rem, 1.3vw, 1rem); color: rgba(255,255,255,.86);
   line-height: 1.75; margin-top: .75rem; margin-bottom: 2.5rem; max-width: 420px;
 }
 .coverage-regions { display: flex; flex-direction: column; gap: 1.25rem; }
@@ -473,7 +473,7 @@ button, input, select, textarea { font: inherit; }
   animation: statFlip 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .trust-label {
-  font-size: .75rem; font-weight: 600; color: var(--text-3);
+  font-size: .75rem; font-weight: 600; color: var(--text-2);
   text-transform: uppercase; letter-spacing: .07em; line-height: 1.4;
 }
 .trust-list {
@@ -482,7 +482,7 @@ button, input, select, textarea { font: inherit; }
   display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 4rem;
 }
 .trust-list li {
-  font-size: .93rem; color: var(--text-2);
+  font-size: .93rem; color: var(--text-1);
   padding-left: 1.5rem; position: relative; line-height: 1.65;
 }
 .trust-list li::before {
@@ -507,10 +507,10 @@ section { padding-block: clamp(4rem, 8vw, 7rem); }
 }
 .section-sub {
   font-size: clamp(.92rem, 1.3vw, 1.02rem);
-  color: var(--text-2); max-width: 580px; line-height: 1.75;
+  color: var(--text-1); max-width: 580px; line-height: 1.75;
 }
 .section-h2--light { color: var(--white); }
-.section-tag--light { color: rgba(255,255,255,.45); }
+.section-tag--light { color: rgba(255,255,255,.72); }
 
 /* ── Scroll reveal ────────────────────────────────── */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
@@ -570,7 +570,7 @@ textarea { resize: vertical; min-height: 96px; }
 .footer-logo { height: 30px; width: auto; margin-bottom: .75rem; }
 .footer-brand p { font-size: .87rem; color: rgba(255,255,255,.44); }
 .footer-contact { display: flex; flex-direction: column; gap: .5rem; align-items: flex-end; }
-.footer-contact a { font-size: .87rem; color: rgba(255,255,255,.58); transition: color .2s; }
+.footer-contact a { font-size: .87rem; color: rgba(255,255,255,.82); transition: color .2s; }
 .footer-contact a:hover { color: var(--white); }
 .footer-legal { padding-block: 1.5rem; }
 .footer-legal p { font-size: .77rem; color: rgba(255,255,255,.3); text-align: center; }
