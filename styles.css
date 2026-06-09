@@ -167,14 +167,14 @@ button, input, select, textarea { font: inherit; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 
 .hero-h1 {
-  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  font-size: clamp(1.75rem, 3vw, 2.6rem);
   font-weight: 900; color: var(--white);
   line-height: 1.05; letter-spacing: -.03em;
 }
 
 .hero-sub {
-  font-size: clamp(.9rem, 1.4vw, 1.05rem);
-  color: rgba(255,255,255,.65); max-width: 520px; line-height: 1.75;
+  font-size: clamp(.82rem, 1.1vw, .95rem);
+  color: rgba(255,255,255,.65); max-width: 520px; line-height: 1.6;
 }
 
 .hero-ctas { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
