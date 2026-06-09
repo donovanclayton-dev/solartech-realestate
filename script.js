@@ -41,6 +41,24 @@ if (reveals.length && 'IntersectionObserver' in window) {
   reveals.forEach(el => el.classList.add('visible'));
 }
 
+/* ── Steps sequential light-up ───────────────────── */
+const stepsGrid = document.querySelector('.steps-grid');
+if (stepsGrid && 'IntersectionObserver' in window) {
+  new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    const steps = [...stepsGrid.querySelectorAll('.step')];
+    steps.forEach((step, i) => {
+      setTimeout(() => {
+        steps.forEach(s => s.classList.remove('lit'));
+        step.classList.add('lit');
+        if (i === steps.length - 1) {
+          setTimeout(() => steps.forEach(s => s.classList.add('lit')), 500);
+        }
+      }, i * 650);
+    });
+  }, { threshold: 0.4 }).observe(stepsGrid);
+}
+
 /* ── Trust stat flip + count-up ──────────────────── */
 const trustGrid = document.querySelector('.trust-grid');
 if (trustGrid && 'IntersectionObserver' in window) {
