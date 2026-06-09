@@ -141,32 +141,32 @@ button, input, select, textarea { font: inherit; }
   gap: 1.5rem;
 }
 
-.hero-stats {
+.hero-stat-boxes {
   display: flex;
-  gap: 0;
+  gap: 1rem;
   margin-top: .5rem;
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: var(--r-md);
-  overflow: hidden;
-  width: fit-content;
 }
 
-.hero-stat {
-  padding: .875rem 1.5rem;
-  border-right: 1px solid rgba(255,255,255,.12);
+.hero-stat-box {
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: var(--r-lg);
+  padding: 1.5rem 2rem;
+  flex: 1;
 }
-.hero-stat:last-child { border-right: none; }
 
 .hero-stat-num {
-  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 900; color: var(--white);
-  line-height: 1; letter-spacing: -.02em; margin-bottom: .2rem;
+  line-height: 1; letter-spacing: -.03em; margin-bottom: .4rem;
 }
 
 .hero-stat-label {
-  font-size: .65rem; font-weight: 700;
+  font-size: .68rem; font-weight: 700;
   color: rgba(255,255,255,.65);
-  text-transform: uppercase; letter-spacing: .08em;
+  text-transform: uppercase; letter-spacing: .1em;
 }
 
 .open-badge {
@@ -186,9 +186,9 @@ button, input, select, textarea { font: inherit; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 
 .hero-h1 {
-  font-size: clamp(2.4rem, 4.2vw, 4rem);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
   font-weight: 900; color: var(--white);
-  line-height: 1.04; letter-spacing: -.03em;
+  line-height: 1.02; letter-spacing: -.035em;
 }
 
 .hero-sub {
@@ -567,8 +567,8 @@ textarea { resize: vertical; min-height: 96px; }
 }
 
 @media (max-width: 960px) {
-  .hero-stats { flex-wrap: wrap; width: 100%; }
-  .hero-stat { flex: 1 1 auto; }
+  .hero-stat-boxes { flex-wrap: wrap; }
+  .hero-stat-box { flex: 1 1 200px; }
   .statement-inner { grid-template-columns: 1fr; gap: 1.5rem; }
   .opp-header { grid-template-columns: 1fr; gap: 1rem; }
   .hero-cards { grid-template-columns: 1fr; }
@@ -587,7 +587,7 @@ textarea { resize: vertical; min-height: 96px; }
 
 @media (max-width: 640px) {
   .hero-copy { gap: 1.25rem; }
-  .hero-stats { width: 100%; }
+  .hero-stat-boxes { width: 100%; }
   .hero-h1 { font-size: clamp(2.25rem, 8vw, 3rem); }
   .opp-row { grid-template-columns: 56px 1fr; gap: 1.5rem; }
   .form-row { grid-template-columns: 1fr; }
