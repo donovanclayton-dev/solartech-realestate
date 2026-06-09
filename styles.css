@@ -141,7 +141,7 @@ button, input, select, textarea { font: inherit; }
   border-radius: var(--r-lg);
   padding: 2.5rem 2.75rem;
   max-width: 800px;
-  height: 200px;
+  height: 300px;
   overflow: hidden;
   width: 100%;
   display: flex;
