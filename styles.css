@@ -134,17 +134,18 @@ button, input, select, textarea { font: inherit; }
 }
 
 .hero-glass {
-  background: rgba(7, 17, 31, 0.48);
-  backdrop-filter: blur(22px) saturate(1.4);
-  -webkit-backdrop-filter: blur(22px) saturate(1.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(7, 17, 31, 0.52);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--r-lg);
-  padding: 2rem 2.5rem;
+  padding: 2.75rem 3rem;
+  max-width: 680px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  box-shadow: 0 8px 48px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.07);
+  gap: 1.25rem;
+  box-shadow: 0 8px 48px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.07), inset 0 -1px 0 rgba(0,0,0,.12);
 }
 
 .open-badge {
@@ -164,9 +165,9 @@ button, input, select, textarea { font: inherit; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 
 .hero-h1 {
-  font-size: clamp(2.25rem, 4.5vw, 4.5rem);
+  font-size: clamp(2.4rem, 4.2vw, 4rem);
   font-weight: 900; color: var(--white);
-  line-height: 1.02; letter-spacing: -.03em;
+  line-height: 1.04; letter-spacing: -.03em;
 }
 
 .hero-sub {
