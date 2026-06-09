@@ -123,13 +123,19 @@ button, input, select, textarea { font: inherit; }
 }
 
 .hero-split {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 2.5rem;
+  display: flex;
   align-items: center;
+  gap: 3rem;
   padding-block: clamp(100px, 12vw, 140px) 4rem;
   width: 100%;
 }
+
+.hero-left {
+  flex: 0 0 55%;
+  min-width: 0;
+}
+
+
 
 .hero-glass {
   background: rgba(7, 17, 31, 0.52);
@@ -146,6 +152,8 @@ button, input, select, textarea { font: inherit; }
 }
 
 .hero-right {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -542,6 +550,10 @@ textarea { resize: vertical; min-height: 96px; }
 }
 
 @media (max-width: 960px) {
+  .hero-split { flex-direction: column; align-items: flex-start; }
+  .hero-left { flex: none; width: 100%; }
+  .hero-right { width: 100%; flex-direction: row; flex-wrap: wrap; }
+  .comp-card { flex: 1 1 260px; }
   .statement-inner { grid-template-columns: 1fr; gap: 1.5rem; }
   .opp-header { grid-template-columns: 1fr; gap: 1rem; }
   .hero-cards { grid-template-columns: 1fr; }
