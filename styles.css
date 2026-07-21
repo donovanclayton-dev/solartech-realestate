@@ -309,7 +309,7 @@ button, input, select, textarea { font: inherit; }
 .step-num {
   font-size: 3rem; font-weight: 700;
   font-family: 'Red Hat Display', system-ui, sans-serif;
-  color: rgba(4,23,31,.07); line-height: 1;
+  color: rgba(0, 93, 170, 0.22); line-height: 1;
   margin-bottom: .75rem; letter-spacing: -.03em;
   transition: color .7s;
 }
@@ -362,7 +362,7 @@ button, input, select, textarea { font: inherit; }
 }
 .bonus-card--featured {
   background: var(--orange); border-color: transparent;
-  box-shadow: 0 8px 36px rgba(255,107,44,.35); position: relative;
+  position: relative;
 }
 .bonus-badge {
   position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
@@ -442,10 +442,10 @@ button, input, select, textarea { font: inherit; }
   flex-shrink: 0; margin-top: .35rem;
 }
 .coverage-region strong {
-  display: block; font-size: .93rem; font-weight: 700;
+  display: block; font-size: 1rem; font-weight: 700;
   color: var(--white); margin-bottom: .2rem;
 }
-.coverage-region span { font-size: .8rem; color: rgba(255,255,255,.48); }
+.coverage-region span { font-size: .9rem; color: rgba(255,255,255,.6); }
 
 .coverage-map {
   border-radius: var(--r-lg); overflow: hidden;
