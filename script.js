@@ -147,34 +147,50 @@ if (mapEl && typeof L !== 'undefined') {
   }, { threshold: 0.1 }).observe(mapEl);
 }
 
-/* ── LeadConduit form submission ─────────────────── */
-const lcForm = document.getElementById('lc-form');
-if (lcForm) {
-  /* On submit: bundle extra fields into comments, then let the browser POST normally */
-  lcForm.addEventListener('submit', () => {
-    const parts = [];
-    const brokerage = lcForm.querySelector('#company_name');
-    const license   = lcForm.querySelector('#license');
-    const volume    = lcForm.querySelector('#volume');
-    const message   = lcForm.querySelector('#message');
-    if (brokerage && brokerage.value) parts.push('Brokerage: ' + brokerage.value);
-    if (license   && license.value)   parts.push('License #: ' + license.value);
-    if (volume    && volume.value)    parts.push('Annual Closings: ' + volume.value);
-    if (message   && message.value)   parts.push(message.value);
-    document.getElementById('comments-hidden').value = parts.join(' | ');
-  });
-}
+/* ── Partner application form submission ─────────── */
+const partnerForm = document.getElementById('partner-form');
+if (partnerForm) {
+  partnerForm.addEventListener('submit', async e => {
+    e.preventDefault();
 
-/* Show success message if redirected back after submission */
-if (new URLSearchParams(location.search).get('submitted') === '1') {
-  const formWrap = document.getElementById('lc-form');
-  if (formWrap) {
-    formWrap.innerHTML = `
-      <div class="form-success">
-        <div class="form-success-check">&#10003;</div>
-        <h3>Application Received!</h3>
-        <p>We'll review your application and confirm your partner status within 3–5 business days. Keep an eye on your inbox.</p>
-      </div>`;
-  }
-  history.replaceState(null, '', location.pathname);
+    const btn = partnerForm.querySelector('[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    const data = {
+      first_name:      partnerForm.querySelector('#first_name')?.value  || '',
+      last_name:       partnerForm.querySelector('#last_name')?.value   || '',
+      email:           partnerForm.querySelector('#email')?.value       || '',
+      phone:           partnerForm.querySelector('#phone_1')?.value     || '',
+      brokerage:       partnerForm.querySelector('#company_name')?.value|| '',
+      license:         partnerForm.querySelector('#license')?.value     || '',
+      annual_closings: partnerForm.querySelector('#volume')?.value      || '',
+      message:         partnerForm.querySelector('#message')?.value     || '',
+    };
+
+    try {
+      const res = await fetch('https://hooks.zapier.com/hooks/catch/5317015/445hjct/', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error('Request failed');
+
+      partnerForm.innerHTML = `
+        <div class="form-success">
+          <div class="form-success-check">&#10003;</div>
+          <h3>Application Received!</h3>
+          <p>We'll review your application and confirm your partner status within 3–5 business days. Keep an eye on your inbox.</p>
+        </div>`;
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Submit Application';
+      let errEl = partnerForm.querySelector('.form-error');
+      if (!errEl) {
+        errEl = document.createElement('p');
+        errEl.className = 'form-error';
+        partnerForm.appendChild(errEl);
+      }
+      errEl.textContent = 'Something went wrong. Please try again or email us directly.';
+    }
+  });
 }
