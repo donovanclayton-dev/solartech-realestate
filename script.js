@@ -169,7 +169,7 @@ if (partnerForm) {
     };
 
     try {
-      const res = await fetch('https://hooks.zapier.com/hooks/catch/5317015/445hjct/', {
+      const res = await fetch('https://hook.us2.make.com/xcbezbisyrmll0rgls939vgjlhra8eco', {
         method: 'POST',
         body: JSON.stringify(data),
       });
