@@ -106,23 +106,17 @@ if (trustGrid && 'IntersectionObserver' in window) {
 const mapEl = document.getElementById('map');
 if (mapEl && typeof L !== 'undefined') {
   const map = L.map('map', {
-    center: [36.2, -116.8],
-    zoom: 5,
+    center: [38.5, -105.0],
+    zoom: 4,
     zoomControl: true,
     scrollWheelZoom: false,
     attributionControl: true
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
     maxZoom: 19
-  }).addTo(map);
-
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png', {
-    subdomains: 'abcd',
-    maxZoom: 19,
-    className: 'map-labels-layer'
   }).addTo(map);
 
   const markerIcon = L.divIcon({
@@ -145,7 +139,7 @@ if (mapEl && typeof L !== 'undefined') {
       .bindPopup(`<strong>${area.name}</strong><br>${area.detail}`);
   });
 
-  /* Re-render tiles once the map scrolls into view (fixes blank tile issue) */
+/* Re-render tiles once the map scrolls into view (fixes blank tile issue) */
   new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) {
       map.invalidateSize();
@@ -153,3 +147,34 @@ if (mapEl && typeof L !== 'undefined') {
   }, { threshold: 0.1 }).observe(mapEl);
 }
 
+/* ── LeadConduit form submission ─────────────────── */
+const lcForm = document.getElementById('lc-form');
+if (lcForm) {
+  /* On submit: bundle extra fields into comments, then let the browser POST normally */
+  lcForm.addEventListener('submit', () => {
+    const parts = [];
+    const brokerage = lcForm.querySelector('#company_name');
+    const license   = lcForm.querySelector('#license');
+    const volume    = lcForm.querySelector('#volume');
+    const message   = lcForm.querySelector('#message');
+    if (brokerage && brokerage.value) parts.push('Brokerage: ' + brokerage.value);
+    if (license   && license.value)   parts.push('License #: ' + license.value);
+    if (volume    && volume.value)    parts.push('Annual Closings: ' + volume.value);
+    if (message   && message.value)   parts.push(message.value);
+    document.getElementById('comments-hidden').value = parts.join(' | ');
+  });
+}
+
+/* Show success message if redirected back after submission */
+if (new URLSearchParams(location.search).get('submitted') === '1') {
+  const formWrap = document.getElementById('lc-form');
+  if (formWrap) {
+    formWrap.innerHTML = `
+      <div class="form-success">
+        <div class="form-success-check">&#10003;</div>
+        <h3>Application Received!</h3>
+        <p>We'll review your application and confirm your partner status within 3–5 business days. Keep an eye on your inbox.</p>
+      </div>`;
+  }
+  history.replaceState(null, '', location.pathname);
+}
