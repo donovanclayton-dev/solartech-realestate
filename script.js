@@ -169,7 +169,7 @@ if (partnerForm) {
     };
 
     try {
-      const res = await fetch('https://hook.us2.make.com/xcbezbisyrmll0rgls939vgjlhra8eco', {
+      const res = await fetch('https://hook.us2.make.com/biaykfp5xagf5fejers0c8nyvsfn3qx6', {
         method: 'POST',
         body: JSON.stringify(data),
       });
