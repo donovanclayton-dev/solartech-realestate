@@ -170,9 +170,10 @@ if (partnerForm) {
 
     try {
       const res = await fetch('https://hook.us2.make.com/biaykfp5xagf5fejers0c8nyvsfn3qx6', {
-        method: 'POST',
-        body: JSON.stringify(data),
-      });
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data),
+});
       if (!res.ok) throw new Error('Request failed');
 
       partnerForm.innerHTML = `
