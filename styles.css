@@ -593,6 +593,16 @@ textarea { resize: vertical; min-height: 96px; }
   padding: .9rem 2rem; font-size: .875rem;
   margin-top: 1.5rem; border-radius: var(--r-md);
 }
+.form-checkbox-group { margin-bottom: 1.5rem; }
+.form-checkbox-label {
+  display: flex; align-items: flex-start; gap: .65rem;
+  font-weight: 400; cursor: pointer;
+}
+.form-checkbox-label input[type="checkbox"] {
+  width: 1.1rem; height: 1.1rem; flex: 0 0 auto;
+  margin-top: .15rem; accent-color: var(--orange); cursor: pointer;
+}
+.form-checkbox-label span { font-size: .85rem; color: var(--text-1); font-weight: 500; }
 .form-note { font-size: .77rem; color: var(--text-3); text-align: center; margin-top: .875rem; }
 .form-error { font-size: .84rem; color: #c0392b; text-align: center; margin-top: .75rem; }
 .form-success { text-align: center; padding: 2.5rem 1rem; }

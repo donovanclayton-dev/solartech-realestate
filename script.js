@@ -166,6 +166,7 @@ if (partnerForm) {
       license:         partnerForm.querySelector('#license')?.value     || '',
       annual_closings: partnerForm.querySelector('#volume')?.value      || '',
       message:         partnerForm.querySelector('#message')?.value     || '',
+      marketing_contact_requested: partnerForm.querySelector('#marketing_contact')?.checked || false,
     };
 
     try {
