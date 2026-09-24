@@ -104,45 +104,38 @@ if (trustGrid && 'IntersectionObserver' in window) {
 
 /* ── Coverage map ─────────────────────────────────── */
 const mapEl = document.getElementById('map');
-if (mapEl && typeof L !== 'undefined') {
-  const map = L.map('map', {
-    center: [38.5, -105.0],
-    zoom: 4,
-    zoomControl: true,
-    scrollWheelZoom: false,
+if (mapEl && typeof maplibregl !== 'undefined') {
+  const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+    center: [-117.0, 35.2],
+    zoom: 5.0,
+    scrollZoom: false,
     attributionControl: true
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 19
-  }).addTo(map);
-
-  const markerIcon = L.divIcon({
-    className: 'map-marker-wrap',
-    html: '<div class="map-marker-pulse"></div>',
-    iconSize: [18, 18],
-    iconAnchor: [9, 9],
-    popupAnchor: [0, -14]
-  });
+  map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
 
   const serviceAreas = [
-    { coords: [32.85, -117.2], name: 'Southern California', detail: 'San Diego · Los Angeles · Orange County' },
-    { coords: [37.6, -122.0],  name: 'Northern California', detail: 'San Francisco Bay Area · Sacramento' },
-    { coords: [33.45, -112.1], name: 'Arizona',             detail: 'Phoenix · Scottsdale · Tucson' }
+    { coords: [-117.2, 32.85], name: 'Southern California', detail: 'San Diego · Los Angeles · Orange County' },
+    { coords: [-122.0, 37.6],  name: 'Northern California', detail: 'San Francisco Bay Area · Sacramento' },
+    { coords: [-112.1, 33.45], name: 'Arizona',             detail: 'Phoenix · Scottsdale · Tucson' }
   ];
 
   serviceAreas.forEach(area => {
-    L.marker(area.coords, { icon: markerIcon })
-      .addTo(map)
-      .bindPopup(`<strong>${area.name}</strong><br>${area.detail}`);
+    const el = document.createElement('div');
+    el.className = 'map-marker-pulse';
+
+    new maplibregl.Marker({ element: el, anchor: 'center' })
+      .setLngLat(area.coords)
+      .setPopup(new maplibregl.Popup({ offset: 14 }).setHTML(`<strong>${area.name}</strong><br>${area.detail}`))
+      .addTo(map);
   });
 
-/* Re-render tiles once the map scrolls into view (fixes blank tile issue) */
+/* Re-render once the map scrolls into view (fixes blank-canvas issue) */
   new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) {
-      map.invalidateSize();
+      map.resize();
     }
   }, { threshold: 0.1 }).observe(mapEl);
 }

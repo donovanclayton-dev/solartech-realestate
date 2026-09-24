@@ -454,20 +454,16 @@ button, input, select, textarea { font: inherit; }
 }
 #map { height: 440px; }
 
-/* Leaflet overrides */
-.leaflet-popup-content-wrapper {
+/* MapLibre overrides */
+.maplibregl-popup-content {
   background: var(--white) !important; border: 1px solid var(--border-mid) !important;
   border-radius: var(--r-md) !important; box-shadow: 0 4px 24px rgba(0,0,0,.15) !important;
-}
-.leaflet-popup-tip { background: var(--white) !important; }
-.leaflet-popup-content strong { color: var(--blue); font-size: .95rem; }
-.leaflet-popup-content {
   color: var(--text-2); font-size: .85rem; line-height: 1.5;
-  font-family: 'Figtree', sans-serif; margin: .75rem 1rem;
+  font-family: 'Figtree', sans-serif; padding: .75rem 1rem;
 }
-.leaflet-container { font-family: 'Figtree', sans-serif; }
-.leaflet-control-attribution { font-size: .65rem !important; }
-.map-marker-wrap { background: transparent; border: none; }
+.maplibregl-popup-tip { border-top-color: var(--white) !important; }
+.maplibregl-popup-content strong { color: var(--blue); font-size: .95rem; }
+.maplibregl-ctrl-attrib { font-size: .65rem !important; font-family: 'Figtree', sans-serif; }
 .map-marker-pulse {
   width: 18px; height: 18px; border-radius: 50%;
   background: var(--orange); box-shadow: 0 0 0 5px rgba(255,107,44,.3);
