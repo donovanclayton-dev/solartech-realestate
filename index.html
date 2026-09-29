@@ -241,7 +241,7 @@
         </div>
         <div class="trust-grid">
           <div class="trust-card reveal reveal-delay-1">
-            <div class="trust-num">25</div>
+            <div class="trust-num">25+</div>
             <div class="trust-label">Years in San Diego</div>
           </div>
           <div class="trust-card reveal reveal-delay-2">
@@ -308,15 +308,27 @@
               <input type="text" id="license" name="license" placeholder="License #" autocomplete="off">
             </div>
           </div>
-          <div class="form-group">
-            <label for="volume">Approximate Annual Closings</label>
-            <select id="volume" name="volume" required>
-              <option value="" disabled selected>Select a range</option>
-              <option>Under 10</option>
-              <option>10 – 25</option>
-              <option>25 – 50</option>
-              <option>50+</option>
-            </select>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="brokerage_type">Brokerage Type</label>
+              <select id="brokerage_type" name="brokerage_type" required>
+                <option value="" disabled selected>Select a type</option>
+                <option>Corporation</option>
+                <option>LLC</option>
+                <option>Sole Proprietorship</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="volume">Approximate Annual Closings</label>
+              <select id="volume" name="volume" required>
+                <option value="" disabled selected>Select a range</option>
+                <option>Under 10</option>
+                <option>10 – 25</option>
+                <option>25 – 50</option>
+                <option>50+</option>
+              </select>
+            </div>
           </div>
           <div class="form-group">
             <label for="message">Anything else we should know? <span class="label-opt">(optional)</span></label>

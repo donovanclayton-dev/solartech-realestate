@@ -156,6 +156,7 @@ if (partnerForm) {
       email:           partnerForm.querySelector('#email')?.value       || '',
       phone:           partnerForm.querySelector('#phone_1')?.value     || '',
       brokerage:       partnerForm.querySelector('#company_name')?.value|| '',
+      brokerage_type:  partnerForm.querySelector('#brokerage_type')?.value || '',
       license:         partnerForm.querySelector('#license')?.value     || '',
       annual_closings: partnerForm.querySelector('#volume')?.value      || '',
       message:         partnerForm.querySelector('#message')?.value     || '',
